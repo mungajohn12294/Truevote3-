@@ -215,30 +215,40 @@
                 menu.style.display = "none";
                 button.classList.remove("rotate");
             }
-        }
 
-        // Firebase Configuration
-        import {
-            initializeApp
-        } from "firebase/app";
-        import {
-            getAnalytics
-        } from "firebase/analytics";
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+         <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCvSPu7QHdcPNDoTBCdVElgqhxyaRRPWn4",
-            authDomain: "truevote-2a5a8.firebaseapp.com",
-            databaseURL: "https://truevote-2a5a8-default-rtdb.firebaseio.com",
-            projectId: "truevote-2a5a8",
-            storageBucket: "truevote-2a5a8.firebasestorage.app",
-            messagingSenderId: "204518176663",
-            appId: "1:204518176663:web:a1c5df06c561218cf736d2",
-            measurementId: "G-PQ6ZXB1F8K"
-        };
+  const firebaseConfig = {
+    apiKey: "AIzaSyBkDrpGnLtvANsKvThuGE_QFxFKG-sDmVg",
+    authDomain: "truevote3.firebaseapp.com",
+    databaseURL: "https://truevote3-default-rtdb.firebaseio.com",
+    projectId: "truevote3",
+    storageBucket: "truevote3.firebasestorage.app",
+    messagingSenderId: "539665136775",
+    appId: "1:539665136775:web:587513e4b8388de0b48c22",
+      measurementId: "G-BRGQWXM3GJ" 
+  };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  function saveUser(idNumber, voterNumber, phoneNumber) {
+    set(ref(db, 'users/' + idNumber), {
+      voterNumber: voterNumber,
+      phoneNumber: phoneNumber
+    }).then(() => {
+      alert("User Data Saved Successfully!");
+    }).catch((error) => {
+      alert("Error: " + error);
+    });
+  }
+</script>
+   
     </script>
 </body>
 
