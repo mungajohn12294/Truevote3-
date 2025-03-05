@@ -178,7 +178,24 @@ function submitVote() {
       window.location.href = "blockchain.html";
     }, 1000);
   }
+}function submitVote() {
+  const president = document.querySelector('input[name="president"]:checked')?.value;
+  const governor = document.querySelector('input[name="governor"]:checked')?.value;
+
+  if (president && governor) {
+    const userId = localStorage.getItem("userId");
+    set(ref(db, 'votes/' + userId), {
+      president: president,
+      governor: governor
+    });
+    alert("Vote Saved Successfully!");
+    window.location.href = "blockchain.html";
+  } else {
+    alert("Please select all candidates!");
+  }
 }
+
+	
 </script>
 
   </body>
