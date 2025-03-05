@@ -87,7 +87,23 @@
     } else {
       alert("Please fill all fields!");
     }
+  }function Register() {
+  const idNumber = document.getElementById('idNumber').value;
+  const voterNumber = document.getElementById('voterNumber').value;
+  const phoneNumber = document.getElementById('phoneNumber').value;
+
+  if (idNumber && voterNumber && phoneNumber) {
+    saveUser(idNumber, voterNumber, phoneNumber);
+    alert("User Registered Successfully!");
+    setTimeout(() => {
+      window.location.href = 'opt.html';
+    }, 1000);
+  } else {
+    alert("Please fill all fields!");
   }
+}
+
+	
 </script>
   </body>
 </html>
